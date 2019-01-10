@@ -1,0 +1,12 @@
+#Root premission required by travis
+sudo: required
+#Service command will install docker
+services:
+  - docker
+#Before installing, the next line tags the container id and renames it
+before_install
+  - docker build -t kiwiman/docker-react -f Dockerfile.dev .
+
+#The below command ensures that npm test end when it has been completed
+script: 
+  - docker run kiwiman/docker-react npm run test -- --coverage
