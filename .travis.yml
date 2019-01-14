@@ -12,7 +12,7 @@ script:
   - docker run kiwiman/docker-react npm run test -- --coverage
 
 deploy:
-  provide: elasticbeanstalk
+  provider: elasticbeanstalk
   region: "eu-west-2"
   app: "docker-react"
   env: "DockerReact-env"
