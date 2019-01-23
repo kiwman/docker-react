@@ -8,18 +8,18 @@ before_install:
   - docker build -t kiwiman/docker-react -f Dockerfile.dev .
 
 #The below command ensures that npm test end when it has been completed
-script: 
+script:
   - docker run kiwiman/docker-react npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
-  region: "eu-west-2"
+  region: "us-east-1"
   app: "docker_react"
   env: "DockerReact-env"
-  bucket_name: "elasticbeanstalk-eu-west-2-467777605727"
+  bucket_name: "elasticbeanstalk-us-east-1-467777605727"
   buket_path: "docker-react"
   on:
-    branch: master      
-  access_key_id: $AWS_ACCESS_KEY  
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: "$AWS_SECRET_KEY"       
+    secure: "$AWS_SECRET_KEY"
